@@ -9,7 +9,7 @@ use near_sdk::json_types::{U64, U128};
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
-pub struct Counter {
+pub struct PriceFetcher {
     val: i8,
     pub usn_contract: AccountId,
 }

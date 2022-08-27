@@ -1,6 +1,8 @@
 import "regenerator-runtime/runtime";
-import { initContract, login, logout, getCounter, counterIncrement,
-         counterDecrement, counterReset } from './near/utils'
+import {
+  initContract, login, logout, getCounter, counterIncrement,
+  counterDecrement, counterReset, getPriceData
+} from './near/utils'
 
 function resetUI(){
   document.querySelector('#show').classList.replace('number','loader');
@@ -67,10 +69,10 @@ async function signedInFlow() {
 }
 
 async function updateUI(){
-  let count = await getCounter();
+  let count = await getPriceData();
   
   document.querySelector('#show').classList.replace('loader','number');
-  document.querySelector('#show').innerText = count === undefined ? 'calculating...' : count;
+  document.querySelector('#show').innerText = count === undefined ? 'fetching...' : count;
   document.querySelector('#left').classList.toggle('eye');
 
   if (count >= 0) {
